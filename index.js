@@ -3,11 +3,14 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { connectDB } from "./Config/Database.js";
 import router from "./Routes/TransactionsRoutes.js";
+import job from "./cron.js";
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+if(process.env.NODE_ENV === 'production') job.start()
 
 const PORT = process.env.PORT || 7000;
 
