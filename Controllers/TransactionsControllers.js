@@ -30,7 +30,7 @@ export const getTransactionsByUserID = async (req, res) => {
       return res.status(400).json({ message: "Transaction Not Found" });
     }
     console.log(transactions);
-    return res.status(201).json({ message: "Transaction Found" });
+    return res.status(200).json({ message: "Transaction Found",transactions });
   } catch (error) {
     return res.status(500).json({ message: "Internal Server Error" });
   }
